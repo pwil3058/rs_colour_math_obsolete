@@ -26,14 +26,14 @@ fn main() {
         .attributes(&attributes)
         .build();
     selector.connect_changed(|sel| println!("Selected: {:?}", sel));
-    vbox.pack_start(&selector.pwo(), false, false, 0);
+    vbox.pack_start(selector.pwo(), false, false, 0);
 
     let cads = ColourAttributeDisplayStackBuilder::new()
         .attributes(&attributes)
         .build();
     cads.set_colour(Some(&RGB::from([0.1, 0.4, 0.7])));
     cads.set_target_colour(Some(&RGB::from([0.7, 0.4, 0.7])));
-    vbox.pack_start(&cads.pwo(), true, true, 0);
+    vbox.pack_start(cads.pwo(), true, true, 0);
 
     // let rgb_entry = RGBHexEntryBuilder::<u8>::new().build();
     // vbox.pack_start(&rgb_entry.pwo(), false, false, 0);
@@ -53,13 +53,13 @@ fn main() {
     colour_editor.connect_changed(move |rgb| cads.set_colour(Some(rgb)));
     let colour_editor_c = colour_editor.clone();
     button1.connect_clicked(move |_| colour_editor_c.reset());
-    vbox.pack_start(&colour_editor.pwo(), true, true, 0);
+    vbox.pack_start(colour_editor.pwo(), true, true, 0);
 
     let gtk_hue_wheel = GtkHueWheelBuilder::new()
         .attributes(&attributes)
         .menu_item_specs(&[("add", ("Add", None, Some("Add something")).into(), 0)])
         .build();
-    vbox.pack_start(&gtk_hue_wheel.pwo(), true, true, 0);
+    vbox.pack_start(gtk_hue_wheel.pwo(), true, true, 0);
     gtk_hue_wheel.add_item(ColouredShape::new(
         RGB::RED,
         "Red",

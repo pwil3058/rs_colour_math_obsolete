@@ -15,7 +15,7 @@ pub(crate) fn calc_other_from_angle<F: ColourComponent>(abs_angle: Degrees<F>) -
         fn f<F: ColourComponent>(angle: Degrees<F>) -> F {
             // Careful of float not fully representing real numbers
             (angle.sin() / (Degrees::GREEN - angle).sin()).min(F::ONE)
-        };
+        }
         if abs_angle <= Degrees::YELLOW {
             f(abs_angle)
         } else if abs_angle <= Degrees::GREEN {
@@ -157,7 +157,7 @@ impl<F: ColourComponent> From<Degrees<F>> for HueData<F> {
             fn f<F: ColourComponent>(angle: Degrees<F>) -> F {
                 // Careful of float not fully representing real numbers
                 (angle.sin() / (Degrees::GREEN - angle).sin()).min(F::ONE)
-            };
+            }
             if angle >= Degrees::DEG_0 {
                 if angle < Degrees::YELLOW {
                     Self {

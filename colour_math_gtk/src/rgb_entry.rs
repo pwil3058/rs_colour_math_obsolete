@@ -97,7 +97,7 @@ where
             let label = gtk::Label::new(Some(label));
             label.set_widget_colour_rgb(rgb);
             hbox.pack_start(&label, true, true, 0);
-            hbox.pack_start(&entry.pwo(), false, false, 0);
+            hbox.pack_start(entry.pwo(), false, false, 0);
             v.push(entry);
         }
         let entries = [Rc::clone(&v[0]), Rc::clone(&v[1]), Rc::clone(&v[2])];
